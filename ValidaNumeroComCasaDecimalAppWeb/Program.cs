@@ -12,6 +12,13 @@ builder.Services.AddDbContext<ValidaNumeroComCasaDecimalAppWebContext>(options =
 
 var app = builder.Build();
 
+//solução 2 - não resolve input na UI com separador decimal com virgula (com ponto, formato americano)
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    SupportedCultures = new[] { new CultureInfo("en-US") },
+});
+
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
